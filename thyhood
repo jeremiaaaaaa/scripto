@@ -1,0 +1,700 @@
+if game.PlaceId == 10192063645 or game.PlaceId == 10683359068 then
+    function Find(String, Table)
+        local Lower = String:lower()
+        for _, v in next, Table do
+            if string.find(Lower, v:lower()) then
+                return true
+            end
+        end
+        return false
+    end
+
+    local a = game:GetService("Workspace").WorkbenchA.Part
+
+    local b = game:GetService("Workspace").WorkbenchB.Part
+
+    local c = game:GetService("Workspace").WorkbenchC.Part
+
+    local d = game:GetService("Workspace").WorkbenchD.Part
+
+    for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+        if v.Name == "anticheatcooldown" then
+            v:Destroy()
+        elseif not game:GetService("Players").LocalPlayer.Character:FindFirstChild(v) then
+        end
+    end
+
+    game:GetService("Players").LocalPlayer.Character.Humanoid.Died:Connect(
+        function()
+            local tbp = game:GetService("Players").LocalPlayer.Character:WaitForChild("anticheatcooldown")
+            tbp:Destroy()
+        end
+    )
+
+    local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/shlexware/Orion/main/source")))()
+
+    local Window =
+        OrionLib:MakeWindow(
+            {Name = "THU", HidePremium = true, SaveConfig = false, ConfigFolder = "OrionTest", IntroEnabled = false}
+        )
+
+    OrionLib:MakeNotification(
+        {
+            Name = "Thanks.",
+            Content = "Thank you for using THU, " .. game:GetService("Players").LocalPlayer.Name .. ".",
+            Image = "rbxassetid://7072717857",
+            Time = 4
+        }
+    )
+
+    local Tab1 =
+        Window:MakeTab(
+            {
+                Name = "Main",
+                Icon = "rbxassetid://7072718840",
+                PremiumOnly = false
+            }
+        )
+
+    local Tab2 =
+        Window:MakeTab(
+            {
+                Name = "Finance",
+                Icon = "rbxassetid://7072715646",
+                PremiumOnly = false
+            }
+        )
+
+    local Tab3 =
+        Window:MakeTab(
+            {
+                Name = "Miscellaneous",
+                Icon = "rbxassetid://7072721644",
+                PremiumOnly = false
+            }
+        )
+
+    local Tab4 =
+        Window:MakeTab(
+            {
+                Name = "Credit",
+                Icon = "rbxassetid://7072724538",
+                PremiumOnly = false
+            }
+        )
+
+    Tab1:AddDropdown(
+        {
+            Name = "Teleports",
+            Default = "",
+            Options = {
+                "Bank of Cornelius",
+                "British Museum",
+                "Sir Quagham's apothecary",
+                "Jimmy John's corner store",
+                "Wally bogman's armoury",
+                "Debonair dresser",
+                "Black market"
+            },
+            Callback = function(Value)
+                if Value == "Bank of Cornelius" then
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+                    tweenService:Create(
+                        game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart,
+                        tweenInfo,
+                        {CFrame = CFrame.new(-616.971435546875, 7.141429424285889, -121.87908935546875)}
+                    ):Play()
+                elseif Value == "British Museum" then
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+                    tweenService:Create(
+                        game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart,
+                        tweenInfo,
+                        {CFrame = CFrame.new(-99.7638931274414, 7.141429424285889, -95.86727905273438)}
+                    ):Play()
+                elseif Value == "Sir Quagham's apothecary" then
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+                    tweenService:Create(
+                        game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart,
+                        tweenInfo,
+                        {CFrame = CFrame.new(-678.368896484375, 7.141429424285889, -242.48605346679688)}
+                    ):Play()
+                elseif Value == "Jimmy John's corner store" then
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+                    tweenService:Create(
+                        game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart,
+                        tweenInfo,
+                        {CFrame = CFrame.new(-399.8467102050781, 7.141429424285889, 10.609606742858887)}
+                    ):Play()
+                elseif Value == "Wally bogman's armoury" then
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+                    tweenService:Create(
+                        game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart,
+                        tweenInfo,
+                        {CFrame = CFrame.new(-385.8722229003906, 7.141429424285889, -268.3694152832031)}
+                    ):Play()
+                elseif Value == "Debonair dresser" then
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+                    tweenService:Create(
+                        game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart,
+                        tweenInfo,
+                        {CFrame = CFrame.new(-957.7818603515625, 6.641377925872803, -41.06182861328125)}
+                    ):Play()
+                elseif Value == "Black market" then
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+                    tweenService:Create(
+                        game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart,
+                        tweenInfo,
+                        {CFrame = CFrame.new(-1035.5421142578125, 6.641210556030273, -232.89401245117188)}
+                    ):Play()
+                end
+            end
+        }
+    )
+
+    local Section =
+        Tab1:AddSection(
+            {
+                Name = "Auto Collect"
+            }
+        )
+
+    Tab1:AddToggle(
+        {
+            Name = "Moneybags",
+            Default = false,
+            Color = Color3.fromRGB(12, 116, 84),
+            Callback = function(Value)
+                getgenv().Moneybags = Value
+                while getgenv().Moneybags do
+                    task.wait()
+                    for _, v in pairs(game:GetService("Workspace"):GetChildren()) do
+                        if v.Name == "moneybag" then
+                            firetouchinterest(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, v, 0)
+                            firetouchinterest(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, v, 1)
+                        end
+                    end
+                end
+            end
+        }
+    )
+
+    Tab1:AddToggle(
+        {
+            Name = "Tools",
+            Default = false,
+            Color = Color3.fromRGB(12, 116, 84),
+            Callback = function(Value)
+                getgenv().Tools = Value
+                while getgenv().Tools do
+                    task.wait()
+                    for _, v in pairs(game:GetService("Workspace"):GetChildren()) do
+                        if
+                            game:GetService("Players").LocalPlayer.Character and v:IsA("BackpackItem") and
+                            v:FindFirstChild("Handle") and
+                            v.Name ~= "leech" and
+                            v.Name ~= "Broom"
+                        then
+                            game:GetService("Players").LocalPlayer.Character.Humanoid:EquipTool(v)
+                        end
+                    end
+                end
+            end
+        }
+    )
+
+    Tab1:AddParagraph("-", '"What an incredibly feature-rich script," said no-one ever, nor will anyone.')
+
+    local Section =
+        Tab2:AddSection(
+            {
+                Name = "Auto Crafter"
+            }
+        )
+
+    Tab2:AddButton(
+        {
+            Name = "Buy",
+            Callback = function()
+                if game:GetService("Players").LocalPlayer.Character.shillings.Value >= 5 then
+                    repeat
+                        task.wait()
+                        fireproximityprompt(game:GetService("Workspace")["economy shop"].buypromptD.ProximityPrompt)
+                    until game:GetService("Players").LocalPlayer.Character.shillings.Value <= 4 or
+                        (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position -
+                        game:GetService("Workspace")["economy shop"].buypromptD.Position).Magnitude > 20
+                else
+                    repeat
+                        task.wait()
+                        fireproximityprompt(game:GetService("Workspace")["economy shop"].buypromptC.ProximityPrompt)
+                    until game:GetService("Players").LocalPlayer.Character.shillings.Value <= 0 or
+                        (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position -
+                        game:GetService("Workspace")["economy shop"].buypromptC.Position).Magnitude > 20
+                end
+            end
+        }
+    )
+
+    Tab2:AddButton(
+        {
+            Name = "Craft",
+            Callback = function()
+                for _, v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+                    if Find(v.Name, {"unfinished"}) then
+                        v.Parent = game:GetService("Players").LocalPlayer.Character
+                    end
+                end
+
+                for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+                    if Find(v.Name, {"unfinished"}) then
+                        repeat
+                            task.wait()
+
+                            for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+                                if Find(v.Name, {"unfinished"}) then
+                                    firetouchinterest(a, v.Handle, 0)
+                                    firetouchinterest(a, v.Handle, 1)
+                                    firetouchinterest(b, v.Handle, 0)
+                                    firetouchinterest(b, v.Handle, 1)
+                                    firetouchinterest(c, v.Handle, 0)
+                                    firetouchinterest(c, v.Handle, 1)
+                                    firetouchinterest(d, v.Handle, 0)
+                                    firetouchinterest(d, v.Handle, 1)
+                                end
+                            end
+                        until not v:IsDescendantOf(game:GetService("Players").LocalPlayer.Character)
+                    end
+                end
+            end
+        }
+    )
+
+    Tab2:AddButton(
+        {
+            Name = "Sell",
+            Callback = function()
+                for _, v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+                    if
+                        v:IsA("Tool") and Find(v.Name, {"flint", "sword"}) and not Find(v.Name, {"unfinished"}) and
+                        not Find(v.Name, {"ammo"}) and
+                        (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position -
+                        Vector3.new(-576.5, 5, -147)).Magnitude <= 20
+                    then
+                        v.Parent = game:GetService("Players").LocalPlayer.Character
+                    end
+                end
+
+                for _, z in pairs(game:GetService("Workspace"):GetDescendants()) do
+                    if
+                        z:IsA("ProximityPrompt") and z.Parent.Name == "sellweapon" and
+                        z.Parent.Rotation == Vector3.new(0, 0, 0)
+                    then
+                        repeat
+                            task.wait()
+                            fireproximityprompt(z)
+                        until not game.Players.LocalPlayer.Character:FindFirstChild("flintlock pistol") and
+                            not game.Players.LocalPlayer.Character:FindFirstChild("Shortsword") or
+                            (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position -
+                            z.Parent.Position).Magnitude > 20
+                        task.wait()
+                        for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+                            if v:IsA("Tool") and Find(v.Name, {"flint", "sword"}) then
+                                game:GetService("Players").LocalPlayer.Character.Humanoid:UnequipTools(v)
+                            end
+                        end
+                    end
+                end
+            end
+        }
+    )
+
+    Tab2:AddParagraph(
+        "-",
+        'A shortsword and/or a single shilling are required, as well as for you to be within a twenty-stud radius of the buy and sell pads. As for the below, you must also be "within a twenty-stud radius" of the convert pads.'
+    )
+
+    local Section =
+        Tab2:AddSection(
+            {
+                Name = "Converters"
+            }
+        )
+
+    Tab2:AddButton(
+        {
+            Name = "Pounds to Shillings",
+            Callback = function()
+                repeat
+                    task.wait()
+                    fireproximityprompt(game:GetService("Workspace")["bank converters"].bankpromptA.ProximityPrompt)
+                until game:GetService("Players").LocalPlayer.Character.pounds.Value <= 0 or
+                    (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position -
+                    game:GetService("Workspace")["bank converters"].bankpromptA.Position).Magnitude > 20
+            end
+        }
+    )
+
+    Tab2:AddButton(
+        {
+            Name = "Shillings to Pounds",
+            Callback = function()
+                repeat
+                    task.wait()
+                    fireproximityprompt(game:GetService("Workspace")["bank converters"].bankpromptB.ProximityPrompt)
+                until game:GetService("Players").LocalPlayer.Character.shillings.Value <= 11 or
+                    (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position -
+                    game:GetService("Workspace")["bank converters"].bankpromptB.Position).Magnitude > 20
+            end
+        }
+    )
+
+    Tab2:AddButton(
+        {
+            Name = "Shillings to Pence",
+            Callback = function()
+                repeat
+                    task.wait()
+                    fireproximityprompt(game:GetService("Workspace")["bank converters"].bankpromptC.ProximityPrompt)
+                until game:GetService("Players").LocalPlayer.Character.shillings.Value <= 0 or
+                    (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position -
+                    game:GetService("Workspace")["bank converters"].bankpromptC.Position).Magnitude > 20
+            end
+        }
+    )
+
+    Tab2:AddButton(
+        {
+            Name = "Pence to Shillings",
+            Callback = function()
+                repeat
+                    task.wait()
+                    fireproximityprompt(game:GetService("Workspace")["bank converters"].bankpromptD.ProximityPrompt)
+                until game:GetService("Players").LocalPlayer.Character.pence.Value <= 11 or
+                    (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position -
+                    game:GetService("Workspace")["bank converters"].bankpromptD.Position).Magnitude > 20
+            end
+        }
+    )
+
+    Tab2:AddButton(
+        {
+            Name = "Pence to Farthings",
+            Callback = function()
+                repeat
+                    task.wait()
+                    fireproximityprompt(game:GetService("Workspace")["bank converters"].bankpromptE.ProximityPrompt)
+                until game:GetService("Players").LocalPlayer.Character.pence.Value <= 0 or
+                    (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position -
+                    game:GetService("Workspace")["bank converters"].bankpromptE.Position).Magnitude > 20
+            end
+        }
+    )
+
+    Tab2:AddButton(
+        {
+            Name = "Farthings to Pence",
+            Callback = function()
+                repeat
+                    task.wait()
+                    fireproximityprompt(game:GetService("Workspace")["bank converters"].bankpromptF.ProximityPrompt)
+                until game:GetService("Players").LocalPlayer.Character.farthings.Value <= 3 or
+                    (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position -
+                    game:GetService("Workspace")["bank converters"].bankpromptF.Position).Magnitude > 20
+            end
+        }
+    )
+
+    local Section =
+        Tab3:AddSection(
+            {
+                Name = "Miscellaneous"
+            }
+        )
+
+    Tab3:AddButton(
+        {
+            Name = "Burn flags",
+            Callback = function()
+                for _, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+                    if v.Parent.Name == "FlagObject" and v.Name == "cloth" then
+                        for _, z in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+                            if z:IsA("Tool") and z.Name == "torch" then
+                                z:Activate()
+                                firetouchinterest(v, z.damager, 0)
+                                task.wait()
+                                firetouchinterest(v, z.damager, 1)
+                            end
+                        end
+                    end
+                end
+            end
+        }
+    )
+
+    Tab3:AddParagraph("-", "An equipped torch is required.")
+
+    Tab3:AddButton(
+        {
+            Name = "Buy Flags",
+            Callback = function()
+                for _, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+                    if
+                        v:IsA("ProximityPrompt") and v.Parent.Name == "buypromptI" and
+                        v.Parent.Parent.Name == "general shop"
+                    then
+                        repeat
+                            task.wait()
+                            fireproximityprompt(v)
+                        until game:GetService("Players").LocalPlayer.Character.pence.Value <= 9 or
+                            (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position -
+                            v.Parent.Position).Magnitude > 20
+                    end
+                end
+            end
+        }
+    )
+
+    Tab3:AddTextbox(
+        {
+            Name = "Spam Flags",
+            Default = "",
+            TextDisappear = true,
+            Callback = function(Value)
+                if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("flag") then
+                    for _, v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+                        if v.Name == "flag" then
+                            v.Parent = game:GetService("Players").LocalPlayer.Character
+                        end
+                    end
+                    local args = {[1] = Value}
+                    game:GetService("ReplicatedStorage").signage:FireServer(unpack(args))
+                    repeat
+                        task.wait()
+                        game:GetService("Players").LocalPlayer.PlayerGui.signplacing.Enabled = true
+                    until not game:GetService("Players").LocalPlayer.Character:FindFirstChild("flag")
+                    OrionLib:MakeNotification(
+                        {
+                            Name = "-",
+                            Content = "Process stopped.",
+                            Image = "rbxassetid://7072723057",
+                            Time = 4
+                        }
+                    )
+                    game:GetService("Players").LocalPlayer.PlayerGui.signplacing.Enabled = false
+                else
+                    OrionLib:MakeNotification(
+                        {
+                            Name = "Error.",
+                            Content = "No flags found!",
+                            Image = "rbxassetid://7072716549",
+                            Time = 4
+                        }
+                    )
+                end
+            end
+        }
+    )
+
+    Tab3:AddParagraph(
+        "-",
+        "There's no built-in way to activate screen elements through script, at least that I know of. Just use an auto-clicker."
+    )
+
+    Tab3:AddButton(
+        {
+            Name = "Kill All",
+            Callback = function()
+                local expl = game:GetService("Workspace"):WaitForChild("explosion")
+                for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+                    if player.Character.Humanoid.Health ~= 0 and player.Character.UpperTorso and player ~= game:GetService("Players").LocalPlayer then
+                        firetouchinterest(player.Character.Head, expl, 0)
+                        task.wait()
+                        firetouchinterest(player.Character.Head, expl, 1)
+                    end
+                end
+            end
+        }
+    )
+
+    Tab3:AddParagraph(
+        "-",
+        'Requires you to own a grenade. Make that a few, actually. Equip a grenade, press "Kill All," throw the grenade, and ta-da!'
+    )
+
+    Tab3:AddTextbox(
+        {
+            Name = "Kick Player",
+            Default = "",
+            TextDisappear = true,
+            Callback = function(Value)
+                for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+                    if Value:lower() == (player.DisplayName:lower()):sub(1, #Value) then
+                        toKick = player
+                    elseif Value:lower() == (player.Name:lower()):sub(1, #Value) then
+                        toKick = player
+                    end
+                end
+
+                for _, v in pairs(game:GetService("Workspace"):GetChildren()) do
+                    if v:IsA("Part") and Find(v.Name, {"pound", "shilling", "penny", "farthing"}) then
+                        firetouchinterest(toKick.Character.UpperTorso, v, 0)
+                        task.wait()
+                        firetouchinterest(toKick.Character.UpperTorso, v, 1)
+                    end
+                end
+            end
+        }
+    )
+
+    Tab3:AddParagraph(
+        "-",
+        [[Drop a coin, then enter the player to be kicked's username, and so long as they are sixty or more studs away from the coin, they will be kicked. Make sure there aren't two players whose usernames start with the same characters as your input, i.e., exampleone and exampletwo. If you want to kick exampleone you can't just put "example," you'd need to put "exampleo."]]
+    )
+
+    local Section =
+        Tab3:AddSection(
+            {
+                Name = "Player"
+            }
+        )
+
+    Tab3:AddButton(
+        {
+            Name = "Semi Godmode",
+            Callback = function()
+                if game:GetService("Players").LocalPlayer.Character.healthcalculator:FindFirstChild("flaming") then
+                    for _, v in pairs(game:GetService("Players").LocalPlayer.Character.healthcalculator:GetChildren()) do
+                        if v:IsA("IntValue") and not Find(v.Name, {"food", "manipulation", "rare"}) then
+                            v:Destroy()
+                            game:GetService("Players").LocalPlayer.Character.pounds.Changed:Connect(
+                                function(NewValue)
+                                    game:GetService("Players").LocalPlayer.PlayerGui.money.pounds.Text =
+                                        game:GetService("Players").LocalPlayer.Character.pounds.Value .. " Pounds"
+                                end
+                            )
+                            game:GetService("Players").LocalPlayer.Character.shillings.Changed:Connect(
+                                function(NewValue)
+                                    game:GetService("Players").LocalPlayer.PlayerGui.money.shillings.Text =
+                                        game:GetService("Players").LocalPlayer.Character.shillings.Value .. " Shillings"
+                                end
+                            )
+                            game:GetService("Players").LocalPlayer.Character.pence.Changed:Connect(
+                                function(NewValue)
+                                    game:GetService("Players").LocalPlayer.PlayerGui.money.pence.Text =
+                                        game:GetService("Players").LocalPlayer.Character.pence.Value .. " Pence"
+                                end
+                            )
+                            game:GetService("Players").LocalPlayer.Character.farthings.Changed:Connect(
+                                function(NewValue)
+                                    game:GetService("Players").LocalPlayer.PlayerGui.money.farthings.Text =
+                                        game:GetService("Players").LocalPlayer.Character.farthings.Value .. " Farthings"
+                                end
+                            )
+                        end
+                    end
+
+                    OrionLib:MakeNotification(
+                        {
+                            Name = "Success.",
+                            Content = "You are immune to all but fists and fall damage until the next respawn.",
+                            Image = "rbxassetid://7072722883",
+                            Time = 4
+                        }
+                    )
+                else
+                    OrionLib:MakeNotification(
+                        {
+                            Name = "Error.",
+                            Content = "You are already immune.",
+                            Image = "rbxassetid://7072716874",
+                            Time = 4
+                        }
+                    )
+                end
+            end
+        }
+    )
+
+    Tab3:AddParagraph(
+        "-",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    )
+
+    Tab3:AddButton(
+        {
+            Name = "No Jump Cooldown",
+            Callback = function()
+                while task.wait() do
+                    game:GetService("Players").LocalPlayer.Character.Humanoid:SetStateEnabled(
+                        Enum.HumanoidStateType.Jumping,
+                        true
+                    )
+                end
+            end
+        }
+    )
+
+    Tab3:AddButton(
+        {
+            Name = "No Screen Effects",
+            Callback = function()
+                if
+                    game:GetService("Players").LocalPlayer.PlayerGui.healthgui:FindFirstChild("chills") and
+                    game:GetService("Players").LocalPlayer.PlayerGui.healthgui:FindFirstChild("poopoo")
+                then
+                    game:GetService("Players").LocalPlayer.PlayerGui.healthgui.chills:Destroy()
+                    game:GetService("Players").LocalPlayer.PlayerGui.healthgui.poopoo:Destroy()
+                    OrionLib:MakeNotification(
+                        {
+                            Name = "Success.",
+                            Content = "Screen effects are removed until the next respawn.",
+                            Image = "rbxassetid://7072722883",
+                            Time = 4
+                        }
+                    )
+                else
+                    OrionLib:MakeNotification(
+                        {
+                            Name = "Error.",
+                            Content = "Failed to find screen effects.",
+                            Image = "rbxassetid://7072716874",
+                            Time = 4
+                        }
+                    )
+                end
+            end
+        }
+    )
+
+    Tab4:AddParagraph("-", "Thanks for using THU "..game:GetService("Players").LocalPlayer.Character.Name.."—the most unorganized, unstable trash ever made.")
+
+    Tab4:AddButton(
+        {
+            Name = "Copy GitHub",
+            Callback = function()
+                setclipboard("https://github.com/searockets")
+                OrionLib:MakeNotification(
+                    {
+                        Name = "Success.",
+                        Content = "GitHub was copied to your clipboard successfully.",
+                        Image = "rbxassetid://7072717281",
+                        Time = 4
+                    }
+                )
+            end
+        }
+    )
+
+    Tab4:AddButton(
+        {
+            Name = "Exit",
+            Callback = function()
+                game:GetService("CoreGui"):FindFirstChild("Orion"):Destroy()
+            end
+        }
+    )
+
+    OrionLib:Init()
+
+else
+    game:GetService("Players").LocalPlayer:Kick("Wrong game.")
+end
